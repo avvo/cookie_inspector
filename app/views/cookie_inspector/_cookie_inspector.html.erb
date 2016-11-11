@@ -1,0 +1,12 @@
+<% if display? %>
+  <div class="cookie-info">
+    <div class="cookie-info-header">
+      Cookie info (not visible in prod, turn off with cookie_inspector=false param)
+    </div>
+    <div class="cookie-info-data">
+      <table>
+        <%= all_cookies %>
+      </table>
+    </div>
+  </div>
+<% end %>

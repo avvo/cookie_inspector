@@ -1,0 +1,11 @@
+= CookieInspector
+
+This project rocks and uses MIT-LICENSE.
+
+- add @import 'cookie_inspector/cookie_inspector' to your application.scss/application.css
+
+- add `helper CookieInspector::CookieInspectorHelper` to your applicationController
+
+- config.cookie_inspector.secret_key_base = cached_config('secrets')[:secret_key_base]
+
+- to turn on debug, use cookie_inspector=true param. It will stay on until you use cookie_inspector=false
