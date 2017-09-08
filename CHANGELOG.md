@@ -5,6 +5,9 @@ CHANGELOG inspiration from http://keepachangelog.com/.
 
 ## UNRELEASED
 
+## [0.0.3] - Sept. 8th, 2017
+* handle case where encrypted values are nil
+
 ## [0.0.2] - Sept. 8th, 2017
 * add guard to prevent encrypted cookies from being displayed in production
 * clean up some code

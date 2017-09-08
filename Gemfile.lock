@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cookie_inspector (0.0.2)
+    cookie_inspector (0.0.3)
       rails (> 4.2)
 
 GEM

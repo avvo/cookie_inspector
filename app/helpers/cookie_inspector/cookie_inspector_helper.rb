@@ -59,7 +59,12 @@ module CookieInspector
     end
 
     def decrypt_cookie_value(value)
-      Marshal.load(::Base64.decode64(value.split('--').first))
+      return nil if value.nil?
+
+      value_to_decrypt = value.split('--').first
+      return value if value_to_decrypt.nil?
+
+      Marshal.load(::Base64.decode64(value_to_decrypt))
     rescue ArgumentError, TypeError
       value
     end
