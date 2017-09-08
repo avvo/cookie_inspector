@@ -1,4 +1,4 @@
-= CookieInspector
+# CookieInspector
 
 This project rocks and uses MIT-LICENSE.
 
