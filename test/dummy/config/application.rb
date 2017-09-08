@@ -1,6 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+require 'rails'
+
+require "active_model/railtie"
+require "action_controller/railtie"
+require "action_view/railtie"
+require "sprockets/railtie"
+require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
 require "cookie_inspector"
@@ -20,7 +26,9 @@ module Dummy
     # config.i18n.default_locale = :de
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    # config.active_record.raise_in_transactional_callbacks = true
+    # config.cookie_inspector.secret_key_base = cached_config('secrets')[:secret_key_base]
+    config.cookie_inspector.secret_key_base = Rails.application.config_for('secrets')[:secret_key_base]
   end
 end
 

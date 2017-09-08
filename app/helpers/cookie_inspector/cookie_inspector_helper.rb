@@ -18,18 +18,24 @@ module CookieInspector
 
     def all_cookies
       data = []
-      session_cookie_name = Rails.application.config.session_options[:key]
       cookies.each do |name, value|
-        if name == session_cookie_name
-          decrypted_value = session_cookie_value(value)
-        else
-          decrypted_value = decrypt_cookie_value(value)
-        end
-
-        data << [name, decrypted_value]
+        data << [name, decrypted_value(name, value)]
       end
 
       format_array_for_html(data)
+    end
+
+  private
+
+    def decrypted_value(name, value)
+      return value if Rails.env.production?
+
+      session_cookie_name = Rails.application.config.session_options[:key]
+      if name == session_cookie_name
+        return session_cookie_value(value)
+      else
+        return decrypt_cookie_value(value)
+      end
     end
 
     def format_array_for_html(data)
@@ -50,10 +56,7 @@ module CookieInspector
       else
         false
       end
-
     end
-
-  private
 
     def decrypt_cookie_value(value)
       Marshal.load(::Base64.decode64(value.split('--').first))
